@@ -1,0 +1,712 @@
+:root {
+    /* Color System - Cyber Slate / Modern Computing Theme */
+    --bg-main: #0b0f19;
+    --bg-surface: rgba(18, 26, 44, 0.75);
+    --bg-surface-border: rgba(255, 255, 255, 0.08);
+    --bg-card-hover: rgba(255, 255, 255, 0.03);
+
+    /* Brand Accents */
+    --primary: #4f46e5;
+    --primary-glow: rgba(79, 70, 229, 0.35);
+    --accent-cyan: #06b6d4;
+
+    /* Typography & Neutral Colors */
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+
+    /* Functional / Status Feedback */
+    --status-danger: #ef4444;
+    --status-danger-bg: rgba(239, 68, 68, 0.12);
+    --status-warning: #f59e0b;
+    --status-warning-bg: rgba(245, 158, 11, 0.12);
+    --status-success: #10b981;
+    --status-success-bg: rgba(16, 185, 129, 0.12);
+    --status-purple: #a855f7;
+    --status-purple-bg: rgba(168, 85, 247, 0.12);
+
+    /* Micro-interactions & Ergonomics */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--text-primary);
+    background-color: var(--bg-main);
+    color-scheme: dark;
+    font-synthesis: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    background: radial-gradient(circle at 50% -20%, #1e1b4b 0%, var(--bg-main) 70%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* HCI Rule: Visible & Sticky Navigation Context */
+.topbar {
+    min-height: 70px;
+    background: rgba(11, 15, 25, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--bg-surface-border);
+    padding: 0 max(4%, calc((100% - 1200px)/2));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.brand {
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #a5b4fc 0%, var(--accent-cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+}
+
+.topbar nav {
+    display: flex;
+    gap: 24px;
+}
+
+/* HCI Rule: Interactive Affordance & State Indication */
+.topbar nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+}
+
+.topbar nav a:hover,
+.topbar nav a:focus-visible {
+    color: var(--text-primary);
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+}
+
+.container {
+    width: min(1200px, 92%);
+    margin: 34px auto 70px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.auth-wrap {
+    min-height: 75vh;
+    display: grid;
+    place-items: center;
+}
+
+/* Modern Computing Theme: Glassmorphism & Depth Layers */
+.auth-card,
+.panel {
+    background: var(--bg-surface);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--bg-surface-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.auth-card {
+    width: min(470px, 100%);
+    padding: 34px;
+}
+
+.eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    font-weight: 800;
+    color: var(--accent-cyan);
+    text-transform: uppercase;
+}
+
+.auth-card h1,
+.welcome h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 10px 0;
+    letter-spacing: -0.02em;
+}
+
+.muted {
+    color: var(--text-secondary);
+    line-height: 1.55;
+}
+
+.small {
+    font-size: 0.85rem;
+}
+
+/* HCI Rule: Explicit Selection Feedback for Tabs */
+.tabs {
+    display: flex;
+    gap: 8px;
+    margin: 25px 0 18px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 4px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--bg-surface-border);
+}
+
+.tab {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.tab.active {
+    background: var(--primary);
+    color: #ffffff;
+    box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+form {
+    display: grid;
+    gap: 16px;
+}
+
+label {
+    display: grid;
+    gap: 7px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+/* HCI Rule: Accessibility & High-Contrast Focus Ring */
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--bg-surface-border);
+    border-radius: var(--radius-md);
+    font: inherit;
+    color: var(--text-primary);
+    background: rgba(0, 0, 0, 0.25);
+    min-width: 0;
+    transition: all var(--transition-fast);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.25);
+}
+
+/* Target Minimum Ergonomic Touch Area (HCI Standard >= 44px height) */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 11px 20px;
+    background: var(--primary);
+    color: #ffffff;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    box-shadow: 0 4px 14px var(--primary-glow);
+}
+
+.btn:hover {
+    background: #4338ca;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px var(--primary-glow);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn.light {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+    box-shadow: none;
+}
+
+.btn.light:hover {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.message {
+    min-height: 1.2em;
+    color: var(--status-danger);
+    font-size: 0.88rem;
+}
+
+.message.success {
+    color: var(--status-success);
+}
+
+.welcome {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+    margin: 20px 0;
+}
+
+.stat {
+    padding: 18px;
+    background: var(--bg-surface);
+    border: 1px solid var(--bg-surface-border);
+    border-radius: var(--radius-md);
+    display: grid;
+    gap: 6px;
+    transition: transform var(--transition-fast);
+}
+
+.stat:hover {
+    transform: translateY(-2px);
+}
+
+.stat span {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stat strong {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.stat.danger strong {
+    color: var(--status-danger);
+}
+
+.stat.warning strong {
+    color: var(--status-warning);
+}
+
+.layout-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.panel {
+    padding: 24px;
+    min-width: 0;
+}
+
+.panel h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0 0 18px;
+    letter-spacing: -0.01em;
+}
+
+.full-panel {
+    grid-column: 1/-1;
+}
+
+.form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-bottom: 18px;
+}
+
+.form-grid .full {
+    grid-column: 1/-1;
+}
+
+.form-grid button {
+    justify-self: start;
+}
+
+.list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+}
+
+.list li {
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--bg-surface-border);
+    border-radius: var(--radius-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    transition: background var(--transition-fast);
+}
+
+.list li:hover {
+    background: var(--bg-card-hover);
+}
+
+.item-title {
+    font-weight: 600;
+}
+
+.item-meta {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    margin-top: 4px;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--bg-surface-border);
+    vertical-align: middle;
+}
+
+th {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+}
+
+/* HCI Rule: Semantic Color Coding for Recognition Over Recall */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge.high,
+.badge.overdue {
+    background: var(--status-danger-bg);
+    color: var(--status-danger);
+}
+
+.badge.medium,
+.badge.risk {
+    background: var(--status-warning-bg);
+    color: var(--status-warning);
+}
+
+.badge.blocked {
+    background: var(--status-purple-bg);
+    color: var(--status-purple);
+}
+
+.badge.done {
+    background: var(--status-success-bg);
+    color: var(--status-success);
+}
+
+.status-select {
+    min-width: 120px;
+}
+
+.calendar-list {
+    display: grid;
+    gap: 10px;
+}
+
+.calendar-event {
+    padding: 12px 14px;
+    border-left: 3px solid var(--accent-cyan);
+    background: rgba(6, 182, 212, 0.05);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.count {
+    background: var(--primary-glow);
+    color: #a5b4fc;
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Responsive Usability Adaptations */
+@media(max-width:850px) {
+    .stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .topbar nav {
+        display: none !important;
+    }
+}
+
+@media(max-width:650px) {
+    .layout-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full-panel {
+        grid-column: auto;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .welcome {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .auth-card {
+        padding: 24px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid .full {
+        grid-column: auto;
+    }
+
+    .topbar {
+        padding: 0 4%;
+    }
+}
+
+/* Password field with eye toggle */
+.password-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrap input {
+    width: 100%;
+    padding-right: 42px;   /* space for the eye button */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    opacity: 0.55;
+    transition: opacity 0.15s;
+    padding: 4px;
+    line-height: 1;
+}
+
+.toggle-password:hover {
+    opacity: 1;
+}
+
+
+/* =====================================
+   Custom Dark Theme for All Dropdowns
+===================================== */
+
+.theme-select {
+    background-color: #151c2d;
+    color: #f1f5f9;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    border-radius: 12px;
+    color-scheme: dark;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Dropdown open hone par options */
+.theme-select option {
+    background-color: #151c2d;
+    color: #e2e8f0;
+    padding: 12px;
+}
+
+/* Selected option */
+.theme-select option:checked {
+    background-color: #164e63;
+    color: #ffffff;
+}
+
+/* Mouse hover / focus */
+.theme-select:hover {
+    border-color: #06b6d4;
+}
+
+.theme-select:focus {
+    outline: none;
+    border-color: #06b6d4;
+    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.18);
+}
+
+
+/* Separate Edit and Delete Buttons */
+.list li > div:last-child {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.list li > div:last-child .btn {
+    margin: 0;
+}
+
+
+/* =================================
+   User Profile Header Design
+================================= */
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* Profile container */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 14px 6px 6px;
+    background: rgba(30, 41, 59, 0.65);
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    border-radius: 30px;
+    transition: all 0.2s ease;
+}
+
+.user-profile:hover {
+    background: rgba(51, 65, 85, 0.75);
+    border-color: rgba(6, 182, 212, 0.35);
+}
+
+/* Avatar circle */
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4f46e5, #06b6d4);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+
+/* Username */
+.user-name {
+    color: #f1f5f9;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
+
+/* Logout button spacing */
+.user-actions #logoutButton {
+    margin: 0;
+    border-radius: 12px;
+    padding: 11px 20px;
+}
+
+/* Mobile adjustment */
+@media (max-width: 500px) {
+    .user-actions {
+        gap: 8px;
+    }
+
+    .user-profile {
+        gap: 7px;
+        padding-right: 10px;
+    }
+
+    .user-name {
+        font-size: 12px;
+    }
+
+    .user-actions #logoutButton {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+}
+
+/* Add Task Status Dropdown Options Color */
+.status-select {
+    background-color: #151c2d !important;
+    color: #f1f5f9 !important;
+    color-scheme: dark;
+}
+
+.status-select option {
+    background-color: #151c2d !important;
+    color: #f1f5f9 !important;
+}
+
+.status-select option:checked {
+    background-color: #164e63 !important;
+    color: #ffffff !important;
+}

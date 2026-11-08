@@ -1,0 +1,6 @@
+/config/database.php
+.env
+.env.*
+*.bak
+*.log
+*.sql.gz
